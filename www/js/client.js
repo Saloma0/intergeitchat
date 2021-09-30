@@ -25,7 +25,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 'use strict'; // https://www.w3schools.com/js/js_strict.asp
 
-const signalingServerPort = 3000; // must be the same to server.js PORT
+const signalingServerPort = process.env.PORT || 3000; // must be the same to server.js PORT
 const signalingServer = getSignalingServer();
 const roomId = getRoomId();
 const peerInfo = getPeerInfo();
