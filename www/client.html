@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -16,9 +16,9 @@
 
         <!-- Title and Icon -->
 
-        <title>MiroTalk WebRTC Video call, Chat Room & Screen Sharing.</title>
-        <link rel="shortcut icon" href="images/logo.svg" />
-        <link rel="apple-touch-icon" href="images/logo.svg" />
+        <title>Video chamada, sala de bate-papo e compartilhamento de tela.</title>
+        <link rel="shortcut icon" href="images/3.png" />
+        <link rel="apple-touch-icon" href="images/3.png" />
 
         <!-- Meta Information -->
 
@@ -29,7 +29,7 @@
         />
         <meta
             name="description"
-            content="MiroTalk powered by WebRTC, Real-time Simple Secure Fast video calls, chat and screen sharing capabilities in the browser, from your mobile or desktop."
+            content="Baseado em WebRTC, chamadas de vídeo em tempo real simples, seguras rápidas, bate-papo e recursos de compartilhamento de tela no navegador, de seu celular ou desktop."
         />
         <meta
             name="keywords"
@@ -44,7 +44,7 @@
         <meta property="og:description" content="Free WebRTC browser-based video call." />
         <meta property="og:image" content="/images/mirotalk.png" />
         <meta property="og:url" content="https://mirotalk.herokuapp.com/" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/3.png" />
 
         <!-- StyleSheet -->
 
@@ -57,7 +57,7 @@
     </head>
 
     <body onload="initClientPeer()">
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <noscript>Você precisa habilitar o JavaScript para executar este aplicativo.</noscript>
 
         <!-- just 4SEO Optimization -->
 
@@ -66,10 +66,10 @@
         <!-- show this before to join -->
 
         <div id="loadingDiv">
-            <h1 class="pulsate">Loading...</h1>
+            <h1 class="pulsate">Carregando...</h1>
             <pre>
-Please allow camera & microphone
-access to use this app.
+Permita a câmera & o microfone
+acesso para usar este aplicativo.
             </pre>
         </div>
 
@@ -90,7 +90,6 @@ access to use this app.
             <button id="whiteboardBtn" class="fas fa-chalkboard-teacher"></button>
             <button id="fileShareBtn" class="fas fa-folder-open"></button>
             <button id="mySettingsBtn" class="fas fa-cogs"></button>
-            <button id="aboutBtn" class="fas fa-question"></button>
             <button id="leaveRoomBtn" class="fas fa-phone-slash"></button>
         </div>
 
@@ -127,11 +126,11 @@ access to use this app.
 
                         <div class="msg-bubble">
                             <div class="msg-info">
-                                <div class="msg-info-name">Friends Name</div>
+                                <div class="msg-info-name">Nome do participante</div>
                                 <div class="msg-info-time">00:00:00</div>
                             </div>
 
-                            <div class="msg-text">Public message example</div>
+                            <div class="msg-text">Exemplo de mensagem pública</div>
                         </div>
                     </div>
 
@@ -145,11 +144,11 @@ access to use this app.
 
                         <div class="msg-bubble">
                             <div class="msg-info">
-                                <div class="msg-info-name">Your Name</div>
+                                <div class="msg-info-name">Seu nome</div>
                                 <div class="msg-info-time">00:00:00</div>
                             </div>
 
-                            <div class="msg-text">Public message example</div>
+                            <div class="msg-text">Exemplo de mensagem pública</div>
                         </div>
                     </div>
 
@@ -165,11 +164,11 @@ access to use this app.
 
                         <div class="private-msg-bubble">
                             <div class="msg-info">
-                                <div class="msg-info-name">Friends Name</div>
+                                <div class="msg-info-name">Nome do participante</div>
                                 <div class="msg-info-time">00:00:00</div>
                             </div>
 
-                            <div class="msg-text">Private message example</div>
+                            <div class="msg-text">Exemplo de mensagem privada</div>
                         </div>
                     </div>
 
@@ -183,11 +182,11 @@ access to use this app.
 
                         <div class="private-msg-bubble">
                             <div class="msg-info">
-                                <div class="msg-info-name">Your Name</div>
+                                <div class="msg-info-name">Seu nome</div>
                                 <div class="msg-info-time">00:00:00</div>
                             </div>
 
-                            <div class="msg-text">Private message example</div>
+                            <div class="msg-text">Exemplo de mensagem privada</div>
                         </div>
                     </div>
                 </main>
@@ -204,7 +203,7 @@ access to use this app.
                 <!-- End emoji picker -->
 
                 <div class="msger-inputarea">
-                    <input id="msgerInput" class="msger-input" type="text" placeholder="💬 Enter your message..." />
+                    <input id="msgerInput" class="msger-input" type="text" placeholder="💬 Escreva a sua mensagem..." />
                     <button id="msgerVideoUrlBtn" class="fab fa-youtube"></button>
                     <button id="msgerEmojiBtn" class="fas fa-smile"></button>
                     <button id="msgerSendBtn" class="fas fa-paper-plane"></button>
@@ -216,7 +215,7 @@ access to use this app.
             <section id="msgerCP">
                 <section id="msgerCPSec" class="msger">
                     <header id="msgerCPHeader" class="msger-private-header">
-                        <div class="msger-header-title"><i class="fas fa-comment-alt"></i> Send Private messages</div>
+                        <div class="msger-header-title"><i class="fas fa-comment-alt"></i> Enviar mensagem privada</div>
                         <div class="msger-header-options">
                             <button id="msgerCPCloseBtn" class="fas fa-times"></button>
                         </div>
@@ -226,7 +225,7 @@ access to use this app.
                             <input
                                 id="searchPeerBarName"
                                 type="text"
-                                placeholder=" 🔍 Search peer by name..."
+                                placeholder=" 🔍 Pesquise par por nome..."
                                 name="search"
                                 onkeyup="searchPeer()"
                             />
@@ -250,10 +249,10 @@ access to use this app.
             <main>
                 <br />
                 <div class="tab">
-                    <button id="tabDevicesBtn" class="tablinks">Devices</button>
-                    <button id="tabBandwidthBtn" class="tablinks">Bandwidth</button>
-                    <button id="tabRoomBtn" class="tablinks">Room</button>
-                    <button id="tabThemeBtn" class="tablinks">Theme</button>
+                    <button id="tabDevicesBtn" class="tablinks">Dispositivos</button>
+                    <button id="tabBandwidthBtn" class="tablinks">Largura de banda</button>
+                    <button id="tabRoomBtn" class="tablinks">Sala</button>
+                    <button id="tabThemeBtn" class="tablinks">Temas</button>
                 </div>
 
                 <div id="tabDevices" class="tabcontent">
@@ -276,7 +275,7 @@ access to use this app.
 
                 <div id="tabBandwidth" class="tabcontent">
                     <br />
-                    <label for="videoQuality">Video quality</label>
+                    <label for="videoQuality">Qualidade de vídeo</label>
                     <br />
                     <select id="videoQuality">
                         <option value="default">Default</option>
@@ -313,31 +312,31 @@ access to use this app.
                 <div id="tabRoom" class="tabcontent">
                     <br />
                     <div>
-                        <label>My name</label><br />
-                        <input id="myPeerNameSet" type="text" placeholder="Change name..." />&nbsp;&nbsp;
-                        <button id="myPeerNameSetBtn" class="fas fa-user-edit">&nbsp;Change</button>
+                        <label>Meu nome</label><br />
+                        <input id="myPeerNameSet" type="text" placeholder="Mude o nome..." />&nbsp;&nbsp;
+                        <button id="myPeerNameSetBtn" class="fas fa-user-edit">&nbsp;Mudar</button>
                     </div>
                     <br />
                     <div>
-                        <label>Participants</label><br />
-                        <button id="muteEveryoneBtn" class="fas fa-microphone">&nbsp;Mute everyone</button>&nbsp;&nbsp;
-                        <button id="hideEveryoneBtn" class="fas fa-video">&nbsp;Hide everyone</button>
+                        <label>Participantes</label><br />
+                        <button id="muteEveryoneBtn" class="fas fa-microphone">&nbsp;Silenciar todos</button>&nbsp;&nbsp;
+                        <button id="hideEveryoneBtn" class="fas fa-video">&nbsp;Ocultar todos</button>
                         <br /><br />
-                        <label>Security</label><br />
+                        <label>Segurança</label><br />
                         <button id="lockUnlockRoomBtn" class="fas fa-lock-open"></button>
                     </div>
                 </div>
 
                 <div id="tabTheme" class="tabcontent">
                     <br />
-                    <label for="mirotalkTheme">Select</label>
+                    <label for="mirotalkTheme">Seleciona</label>
                     <br />
                     <select id="mirotalkTheme">
-                        <option value="neon">🟣 MiroTalk - neon</option>
-                        <option value="dark">⚫️ MiroTalk - dark</option>
-                        <option value="forest">🟢 MiroTalk - forest</option>
-                        <option value="sky">🔵 MiroTalk - sky</option>
-                        <option value="ghost">⚪️ MiroTalk - ghost</option>
+                        <option value="neon"> - padrão -</option>
+                        <option value="dark">⚫️ - dark</option>
+                        <option value="forest">🟢 - forest</option>
+                        <option value="sky">🔵 - sky</option>
+                        <option value="ghost">⚪️ - ghost</option>
                     </select>
                 </div>
             </main>
@@ -383,7 +382,7 @@ access to use this app.
             <div id="sendFileInfo"></div>
             <div id="sendFilePercentage"></div>
             <progress id="sendProgress" max="0" value="0"></progress>
-            <button id="sendAbortBtn" class="fas fa-stop-circle">&nbsp;Abort</button>
+            <button id="sendAbortBtn" class="fas fa-stop-circle">&nbsp;Cancelar</button>
         </div>
 
         <!-- End File Send -->

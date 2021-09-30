@@ -19,7 +19,7 @@ dependencies: {
     yamljs      : https://www.npmjs.com/package/yamljs
 }
 
-MiroTalk Signaling Server
+Publinild Signaling Server
 Copyright (C) 2021 Miroslav Pejic <miroslav.pejic.85@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
@@ -50,10 +50,18 @@ const app = express();
 app.use(cors()); // Enable All CORS Requests for all origins
 app.use(compression()); // Compress all HTTP responses using GZip
 
-const http = require('http');
-const server = http.createServer(app);
+const https = require('https');
+const fs = require('fs');
+const options = {
+    key: fs.readFileSync(path.join(__dirname, '/ssl/key.pem'), 'utf-8'),
+    cert: fs.readFileSync(path.join(__dirname, '/ssl/cert.pem'), 'utf-8'),
+};
+const server = https.createServer(options, app);
 const { Server } = require('socket.io');
 const io = new Server().listen(server);
+
+const port = process.env.PORT || 3000; // must be the same to client.js signalingServerPort
+const localHost = 'https://' + 'localhost' + ':' + port; // http
 
 const ngrok = require('ngrok');
 const yamlJS = require('yamljs');
@@ -61,12 +69,9 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = yamlJS.load(path.join(__dirname + '/api/swagger.yaml'));
 const { v4: uuidV4 } = require('uuid');
 
-const port = process.env.PORT || 3000; // must be the same to client.js signalingServerPort
-
-const localHost = 'http://' + 'localhost' + ':' + port; // http
 const apiBasePath = '/api/v1'; // api endpoint path
 const api_docs = localHost + apiBasePath + '/docs'; // api docs
-const api_key_secret = process.env.API_KEY_SECRET || 'mirotalk_default_secret';
+const api_key_secret = process.env.API_KEY_SECRET || 'publinild_default_secret';
 const ngrokEnabled = process.env.NGROK_ENABLED;
 const ngrokAuthToken = process.env.NGROK_AUTH_TOKEN;
 const turnEnabled = process.env.TURN_ENABLED;
@@ -111,12 +116,17 @@ app.get(["/"], (req, res) => {
 }); */
 
 // all start from here
+/*
 app.get(['/'], (req, res) => {
     res.sendFile(path.join(__dirname, 'www/landing.html'));
 });
 
 // set new room name and join
 app.get(['/newcall'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'www/newcall.html'));
+});
+*/
+app.get(['/'], (req, res) => {
     res.sendFile(path.join(__dirname, 'www/newcall.html'));
 });
 
@@ -146,7 +156,7 @@ app.get('/join/*', (req, res) => {
 });
 
 /**
-    MiroTalk API v1
+    Publinild API v1
     The response will give you a entrypoint / Room URL for your meeting.
     For api docs we use: https://swagger.io/
 */
@@ -159,7 +169,7 @@ app.post([apiBasePath + '/meeting'], (req, res) => {
     // check if user was authorized for the api call
     let authorization = req.headers.authorization;
     if (authorization != api_key_secret) {
-        log.debug('MiroTalk get meeting - Unauthorized', {
+        log.debug('Publinild get meeting - Unauthorized', {
             header: req.headers,
             body: req.body,
         });
@@ -172,7 +182,7 @@ app.post([apiBasePath + '/meeting'], (req, res) => {
     res.end(JSON.stringify({ meeting: meetingURL }));
 
     // log.debug the output if all done
-    log.debug('MiroTalk get meeting - Authorized', {
+    log.debug('Publinild get meeting - Authorized', {
         header: req.headers,
         body: req.body,
         meeting: meetingURL,
@@ -185,10 +195,10 @@ app.post([apiBasePath + '/meeting'], (req, res) => {
  * @returns meeting Room URL
  */
 function getMeetingURL(host) {
-    return 'http' + (host.includes('localhost') ? '' : 's') + '://' + host;
+    return 'http' + (host.includes('192.168.100.50') ? '' : 's') + '://' + host;
 }
 
-// end of MiroTalk API v1
+// end of Publinild API v1
 
 /**
  * You should probably use a different stun-turn server
@@ -248,12 +258,7 @@ server.listen(port, null, () => {
     log.debug(
         `%c
 
-	███████╗██╗ ██████╗ ███╗   ██╗      ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗ 
-	██╔════╝██║██╔════╝ ████╗  ██║      ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
-	███████╗██║██║  ███╗██╔██╗ ██║█████╗███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
-	╚════██║██║██║   ██║██║╚██╗██║╚════╝╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
-	███████║██║╚██████╔╝██║ ╚████║      ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
-	╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝      ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝ started...
+	Chat Consunild started...
 
 	`,
         'font-family:monospace',

@@ -61,10 +61,10 @@
     --body-bg: black;
     --msger-bg: black;
     --msger-private-bg: black;
-    --left-msg-bg: #da05f3;
+    --left-msg-bg: #ffb431;
     --private-msg-bg: #f77070;
     --right-msg-bg: #579ffb;
-    --box-shadow: 3px 3px 6px #0500ff, -3px -3px 6px #da05f3;
+    --box-shadow: 3px 3px 6px #ffb431, -3px -3px 6px #20c6b6;
     --btn-bg: white;
     --btn-color: black;
     --btn-opc: 1;
@@ -157,7 +157,7 @@
 
 body {
     background: var(--body-bg);
-    background-image: url('../images/bg.svg');
+    background-image: url('../images/logo1.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -202,6 +202,7 @@ body {
 --------------------------------------------------------------*/
 
 .pulsate {
+    color: #20c6b6;
     animation: pulsate 3s ease-out;
     animation-iteration-count: infinite;
     -webkit-animation: pulsate 3s ease-out;
@@ -1037,6 +1038,7 @@ video:fullscreen {
 --------------------------------------------------------------*/
 
 .pulsate {
+    color: #20c6b6;
     animation: pulsate 3s ease-out;
     animation-iteration-count: infinite;
     -webkit-animation: pulsate 3s ease-out;
@@ -1222,7 +1224,7 @@ progress {
     width: 170px;
     height: 40px;
     font-size: 1.2rem;
-    background: linear-gradient(100deg, #376df9 0, #ff5fa0 75%, #ffc55a 100%);
+    background: linear-gradient(100deg, #ffb431 0, #20c6b6 75%, #ffc55a 100%);
     box-shadow: 0 0 6px 0 rgb(251 255 0 / 82%);
     color: #ffffff;
     transition: background 0.23s;
