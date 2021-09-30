@@ -10,6 +10,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE process.env.PORT || 3000
 
 CMD [ "npm", "start" ]

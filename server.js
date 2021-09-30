@@ -61,7 +61,7 @@ const { Server } = require('socket.io');
 const io = new Server().listen(server);
 
 const port = process.env.PORT || 3000; // must be the same to client.js signalingServerPort
-const localHost = 'https://' + 'localhost' + ':' + port; // http
+//const localHost = 'https://' + 'localhost' + ':' + port;  http
 
 const ngrok = require('ngrok');
 const yamlJS = require('yamljs');
